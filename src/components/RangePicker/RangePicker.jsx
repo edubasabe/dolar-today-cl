@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Input from "components/UI/Input/Input";
+import moment from "moment";
 
 const RangePicker = (props) => {
   const [error, setError] = useState(null);
@@ -15,6 +16,12 @@ const RangePicker = (props) => {
 
     if (!endDate) {
       setError("Debe seleccionar la fecha hasta");
+      return;
+    }
+
+    const today = moment().utc();
+    if (moment(startDate).isAfter(today) || moment(endDate).isAfter(today)) {
+      setError("Las fechas no deben ser superior a la de hoy");
       return;
     }
 
