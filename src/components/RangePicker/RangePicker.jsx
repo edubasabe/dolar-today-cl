@@ -1,27 +1,42 @@
-import React from "react";
+import React, { useState } from "react";
 import Input from "components/UI/Input/Input";
 
 const RangePicker = (props) => {
-  const handleStartDateChange = (date) => {
-    props.onSetStartDate(date);
-  };
+  const [error, setError] = useState(null);
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
 
-  const handleEndDateChange = (date) => {
-    props.onSetEndDate(date);
+  const validateFormBeforeSubmit = (e) => {
+    e.preventDefault();
+    if (!startDate) {
+      setError("Debe seleccionar la fecha desde");
+      return;
+    }
+
+    if (!endDate) {
+      setError("Debe seleccionar la fecha hasta");
+      return;
+    }
+
+    setError(null);
+    props.onFormSubmit({
+      startDate,
+      endDate,
+    });
   };
 
   return (
     <div>
       <form
-        className="flex items-end px-20 justify-center"
-        onSubmit={props.onFormSubmit}
+        className="flex items-end justify-center relative"
+        onSubmit={(e) => validateFormBeforeSubmit(e)}
       >
         <Input
           type="date"
           label="Desde"
           required
           containerclassname="max-w-md mr-4 cursor-pointer"
-          onChange={(e) => handleStartDateChange(e.target.value)}
+          onChange={(e) => setStartDate(e.target.value)}
         />
 
         <Input
@@ -29,16 +44,22 @@ const RangePicker = (props) => {
           label="Hasta"
           required
           containerclassname="max-w-md mr-4 cursor-pointer"
-          onChange={(e) => handleEndDateChange(e.target.value)}
+          onChange={(e) => setEndDate(e.target.value)}
         />
 
         <button
           type="submit"
-          onClick={props.onFormSubmit}
+          onClick={(e) => validateFormBeforeSubmit(e)}
           className="btn primary text-white font-bold py-2 px-4 rounded"
         >
           Consultar
         </button>
+
+        {error && (
+          <span className="absolute bottom-0 left-0 text-red-500 text-xs transform translate-y-6">
+            {error}
+          </span>
+        )}
       </form>
     </div>
   );

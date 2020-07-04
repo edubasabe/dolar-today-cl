@@ -13,8 +13,6 @@ import RangePicker from "./components/RangePicker/RangePicker";
 import AverageTable from "components/AverageTable/AverageTable";
 
 function App() {
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
   const [prices, setPrices] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -40,9 +38,8 @@ function App() {
     }
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async ({ startDate, endDate }) => {
     startLoader();
-    e.preventDefault();
     const [startDay, startMonth, startYear] = moment(startDate)
       .format("DD-MM-YYYY")
       .split("-");
@@ -91,13 +88,11 @@ function App() {
         <div
           className={`${
             isLoading ? "is-loading" : ""
-          } shadow-lg rounded bg-white py-5 px-4 mt-5 max-w-3xl mx-auto`}
+          } shadow-lg rounded bg-white py-10 px-16 mt-5 max-w-3xl mx-auto`}
         >
           <div className="flex flex-col">
             <RangePicker
-              onSetStartDate={(date) => setStartDate(date)}
-              onSetEndDate={(date) => setEndDate(date)}
-              onFormSubmit={handleFormSubmit}
+              onFormSubmit={(dateRange) => handleFormSubmit(dateRange)}
             />
 
             <Chart prices={prices} />
