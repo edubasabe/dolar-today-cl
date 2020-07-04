@@ -37,6 +37,18 @@ const Chart = (props) => {
           fill={mainGreen}
           dot={true}
         />
+        <Brush dataKey="date" startIndex={props.prices.length / 2}>
+          <AreaChart>
+            <CartesianGrid />
+            <YAxis hide domain={["auto", "auto"]} />
+            <Area
+              dataKey="price"
+              stroke={mainGreen}
+              fill={mainGreen}
+              dot={false}
+            />
+          </AreaChart>
+        </Brush>
       </AreaChart>
     </ResponsiveContainer>
   );
