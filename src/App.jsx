@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import moment from "moment";
 import NProgress from "nprogress";
@@ -8,7 +9,7 @@ import { parseDolarPrices } from "./utils";
 
 import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
-import swal from "@sweetalert/with-react";
+import swal from "sweetalert";
 
 function App() {
   const [prices, setPrices] = useState([]);
@@ -93,7 +94,6 @@ function App() {
 
   useEffect(() => {
     getThisMonthPrices();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

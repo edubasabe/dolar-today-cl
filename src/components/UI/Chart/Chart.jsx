@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import {
   CartesianGrid,
   XAxis,
@@ -54,6 +56,10 @@ const Chart = (props) => {
       </AreaChart>
     </ResponsiveContainer>
   );
+};
+
+Chart.propTypes = {
+  prices: PropTypes.array,
 };
 
 export default Chart;

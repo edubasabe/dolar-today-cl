@@ -1,5 +1,6 @@
 import React from "react";
 import AveragePrice from "./AveragePrice/AveragePrice";
+import PropTypes from "prop-types";
 
 const AverageTable = (props) => {
   const calculateAverage = (numbers) => {
@@ -28,6 +29,10 @@ const AverageTable = (props) => {
       />
     </div>
   );
+};
+
+AverageTable.propTypes = {
+  prices: PropTypes.array,
 };
 
 export default AverageTable;
