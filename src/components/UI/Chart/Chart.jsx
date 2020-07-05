@@ -13,7 +13,7 @@ import {
 const Chart = (props) => {
   const mainGreen = "#53B670";
   return (
-    <ResponsiveContainer width="95%" height={400}>
+    <ResponsiveContainer width="100%" height={400}>
       <AreaChart
         data={props.prices}
         margin={{ top: 40, right: 40, bottom: 20, left: 20 }}

@@ -93,11 +93,7 @@ function App() {
     <div className="App">
       <div className="container">
         <Header />
-        <div
-          className={`${
-            isLoading ? "is-loading" : ""
-          } Card px-5 shadow-lg rounded sm:bg-white md:py-10 md:px-16 mt-5 max-w-3xl mx-auto`}
-        >
+        <div className={`${isLoading ? "is-loading" : ""} Card`}>
           <div className="flex flex-col">
             <Chart prices={prices} />
             {averageTable}

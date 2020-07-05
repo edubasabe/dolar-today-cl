@@ -1,7 +1,9 @@
 // :: Variables
-$whitestgray: #FCFAFD
+$whitestgray: #EEF2F6
 $white: #fff
+$darkgray: #4C5566
 $green: #53B670
+$red: #f56565
 $fontfamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
   
 // :: Functions
@@ -19,32 +21,32 @@ $baseFontSize : 16
 
 // :: Mixins
 // Media Breakpoints 
-$media-breakpoints-up: ( xxs: 320px, xs: 480px, sm: 576px, md: 768px, lg: 992px, lgx: 1024px, xl: 1200px)      
+$media-breakpoint-up: ( xxs: 320px, xs: 480px, sm: 576px, md: 768px, lg: 992px, lgx: 1024px, xl: 1200px)      
 @mixin media-breakpoint-up($size)
   @if $size == xxs
-    @media (min-width: map-get($media-breakpoints-up, xxs)) 
+    @media (min-width: map-get($media-breakpoint-up, xxs)) 
       @content
   @else if $size == xs
-    @media (min-width: map-get($media-breakpoints-up, xs)) 
+    @media (min-width: map-get($media-breakpoint-up, xs)) 
       @content
   @else if $size == sm
-    @media (min-width: map-get($media-breakpoints-up, sm)) 
+    @media (min-width: map-get($media-breakpoint-up, sm)) 
       @content
   @else if $size == md
-    @media (min-width: map-get($media-breakpoints-up, md)) 
+    @media (min-width: map-get($media-breakpoint-up, md)) 
       @content
   @else if $size == lg
-    @media (min-width: map-get($media-breakpoints-up, lg)) 
+    @media (min-width: map-get($media-breakpoint-up, lg)) 
       @content
   @else if $size == lgx
-    @media (min-width: map-get($media-breakpoints-up, lgx)) 
+    @media (min-width: map-get($media-breakpoint-up, lgx)) 
       @content
   @else
-    @media (min-width: map-get($media-breakpoints-up, xl)) 
+    @media (min-width: map-get($media-breakpoint-up, xl)) 
       @content
 
 // Media breakpoints down
-$media-breakpoints-down:  (xs: 480px, sm: 575.98px, md: 767.98px, lg: 991.98px, lgx: 1023.98px, xl: 1199.98px)      
+$media-breakpoint-down: (xs: 480px, sm: 575.98px, md: 767.98px, lg: 991.98px, lgx: 1023.98px, xl: 1199.98px)      
 @mixin media-breakpoint-down($size)
   @if $size == xxs
     @media (max-width: map-get($media-breakpoint-down, xxs)) 
@@ -68,6 +70,12 @@ $media-breakpoints-down:  (xs: 480px, sm: 575.98px, md: 767.98px, lg: 991.98px, 
     @media (max-width: map-get($media-breakpoint-down, xl)) 
       @content
 
+@mixin labelStyle()
+  color: $darkgray
+  text-transform: uppercase
+  font-size: rem(12)
+  font-weight: bold
+  
 body 
   margin: 0
   font-family: $fontfamily
@@ -75,6 +83,9 @@ body
   -moz-osx-font-smoothing: grayscale
   background-color: $whitestgray
   box-sizing: border-box;
+
+  * 
+    box-sizing: border-box;
 
 code 
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace

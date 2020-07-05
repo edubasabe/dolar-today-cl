@@ -1,29 +1,83 @@
 
-.App
-  &-header
-    line-height: 1.5
-    font-family: $fontfamily
-    border-width: 0
-    margin: 0
-    font-weight: 700
-    font-size: 2.25rem
-    margin-top: 1.25rem
-    text-align: center
+.Header
+  line-height: 1.5
+  font-family: $fontfamily
+  border-width: 0
+  margin: 0
+  font-weight: 700
+  font-size: 2.25rem
+  margin-top: 1.25rem
+  text-align: center
 
 .Card
-  padding: 0 rem(15)
+  padding: rem(15)
   box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)
-  max-width: rem(320)
   margin: 0 auto
+  background-color: $white
+  border-radius: .25rem
 
-.btn
+.Input
+  margin-right: 1rem
+  margin-bottom: 1rem
+  width: 100%
+
+  &__label
+    +labelStyle
+  
+  &__field
+    background-color: $whitestgray
+    overflow: visible;
+    -webkit-appearance: none
+    border-radius: .25rem
+    border: 1px solid $whitestgray
+    font-family: inherit
+    display: block
+    line-height: 1.25
+    // margin-bottom: .75rem
+    padding: .75rem  1rem
+    color: $darkgray
+    width: 100%
+      
+.RangePicker
+  position: relative
+  &__error
+    margin-top: .5rem
+    display: block
+    font-size: rem(12)
+    text-align: center
+    color: $red
+    width: 100%
+
+.AverageTable
+  display: flex
+  justify-content: space-between
+
+.AveragePrice
+  &__label
+    +labelStyle
+  &__amount
+    font-size: rem(26)
+    font-weight: 300
+    margin-top: .25rem
+    margin-bottom: .5rem
+    text-align: center
+
+.Button
   transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease
-  &.primary
-    background-color: $green
-    box-shadow: 0 2px 6px 0 rgba($green,0.39);
-    &:hover
-      background: rgba($green,0.9);
-      box-shadow: 0 6px 20px rgba($green,0.23);
+  background-color: $green
+  box-shadow: 0 2px 6px 0 rgba($green,0.39);
+  background-color: $green
+  padding: .75rem  1rem
+  font-size: 1rem
+  border: 2px solid $green
+  border-radius: .25rem
+  color: $white
+  font-weight: bold
+  width: 100%
+
+  &:hover
+    background: rgba($green,0.9);
+    box-shadow: 0 6px 20px rgba($green,0.23);
 
 /* Loaders */
 div#nprogress
@@ -65,8 +119,23 @@ div#nprogress
 
 /* Responsive */
 +media-breakpoint-up(xs)
-.Card
-  max-width: rem(600)
+  .Card
+    max-width: rem(600)
+
++media-breakpoint-up(md)
+  .AverageTable
+    justify-content: center
+  .AveragePrice
+    &:nth-child(2)
+      margin: 0 2rem
+    &__amount
+      font-size: rem(30)
+  .RangePicker
+    display: flex
+    align-items: flex-end
+  
+  .Input
+    margin-bottom: 0
 
 
 /* Animations */

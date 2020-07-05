@@ -1,8 +1,8 @@
 import React from "react";
 
-const Header = (props) => {
+const Header = () => {
   return (
-    <h1 className="App-header">
+    <h1 className="Header">
       <span role="img" aria-label="Money">
         💵
       </span>{" "}

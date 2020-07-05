@@ -11,23 +11,20 @@ const AverageTable = (props) => {
   const calculateMin = (numbers) => Math.min(...numbers);
   const calculateMax = (numbers) => Math.max(...numbers);
   return (
-    <div className="flex justify-center">
+    <div className="AverageTable">
       <AveragePrice
         title="Valor Mínimo"
         amount={calculateMin(props.prices.map((item) => item.price))}
-        className="text-green-500"
       />
 
       <AveragePrice
         title="Valor Promedio"
         amount={calculateAverage(props.prices.map((item) => item.price))}
-        className="mx-4 sm:mx-10 text-gray-700"
       />
 
       <AveragePrice
         title="Valor Máximo"
         amount={calculateMax(props.prices.map((item) => item.price))}
-        className="text-red-600"
       />
     </div>
   );

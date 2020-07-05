@@ -35,14 +35,13 @@ const RangePicker = (props) => {
   return (
     <>
       <form
-        className="md:flex flex-wrap xl:items-end justify-center relative"
+        className="RangePicker"
         onSubmit={(e) => validateFormBeforeSubmit(e)}
       >
         <Input
           type="date"
           label="Desde"
           required
-          containerclassname="mb-4 sm:mb-0 xl:max-w-md md:mr-4 cursor-pointer"
           onChange={(e) => setStartDate(e.target.value)}
         />
 
@@ -50,23 +49,18 @@ const RangePicker = (props) => {
           type="date"
           label="Hasta"
           required
-          containerclassname="mb-4 sm:mb-0 xl:max-w-md md:mr-4 cursor-pointer"
           onChange={(e) => setEndDate(e.target.value)}
         />
 
         <button
           type="submit"
           onClick={(e) => validateFormBeforeSubmit(e)}
-          className="w-full btn primary text-white font-bold py-2 px-4 rounded"
+          className="Button"
         >
           Consultar
         </button>
 
-        {error && (
-          <span className="absolute text-center sm:text-left w-full bottom-0 left-0 text-red-500 text-xs transform translate-y-6">
-            {error}
-          </span>
-        )}
+        {error && <span className="RangePicker__error">{error}</span>}
       </form>
     </>
   );
