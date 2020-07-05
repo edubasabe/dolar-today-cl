@@ -7,6 +7,7 @@
   font-weight: 700
   font-size: 2.25rem
   margin-top: 1.25rem
+  margin-bottom: 1.5rem
   text-align: center
 
 .Card
@@ -37,6 +38,7 @@
     padding: .75rem  1rem
     color: $darkgray
     width: 100%
+    min-height: rem(46)
       
 .RangePicker
   position: relative
@@ -61,6 +63,12 @@
     margin-top: .25rem
     margin-bottom: .5rem
     text-align: center
+  &:nth-child(1) .AveragePrice__amount
+    color: $green
+  &:nth-child(2) .AveragePrice__amount
+    color: $darkgray
+  &:nth-child(3) .AveragePrice__amount
+    color: $red
 
 .Button
   transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease
@@ -123,6 +131,8 @@ div#nprogress
     max-width: rem(600)
 
 +media-breakpoint-up(md)
+  .Card
+    padding: rem(50) rem(30)
   .AverageTable
     justify-content: center
   .AveragePrice
@@ -131,8 +141,13 @@ div#nprogress
     &__amount
       font-size: rem(30)
   .RangePicker
+    position: relative
     display: flex
     align-items: flex-end
+    &__error
+      position: absolute
+      bottom: -1.8rem
+      left: 0
   
   .Input
     margin-bottom: 0
