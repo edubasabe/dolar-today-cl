@@ -1,18 +1,20 @@
-$whitestgray: #FCFAFD
-$white: #fff
-$green: #53B670
-$fontfamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
 
-body 
-  margin: 0
-  font-family: $fontfamily
-  -webkit-font-smoothing: antialiased
-  -moz-osx-font-smoothing: grayscale
-  background-color: $whitestgray
+.App
+  &-header
+    line-height: 1.5
+    font-family: $fontfamily
+    border-width: 0
+    margin: 0
+    font-weight: 700
+    font-size: 2.25rem
+    margin-top: 1.25rem
+    text-align: center
 
-code 
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
-
+.Card
+  padding: 0 rem(15)
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)
+  max-width: rem(320)
+  margin: 0 auto
 
 .btn
   transition: background 0.2s ease,color 0.2s ease,box-shadow 0.2s ease
@@ -32,6 +34,7 @@ div#nprogress
   .spinner-icon
     border-top-color: $green
     border-left-color: $green
+    display: none
   
 .is-loading
   position: relative
@@ -42,7 +45,7 @@ div#nprogress
     left: 50%
     height: 40px
     width: 40px
-    background: url(./assets/icon-circle-loader.svg)
+    background: url(../images/icon-circle-loader.svg)
     z-index: 1
     display: block
     position: absolute
@@ -58,6 +61,13 @@ div#nprogress
     width: 100%
     height: 100%
     background-color: $white
+
+
+/* Responsive */
++media-breakpoint-up(xs)
+.Card
+  max-width: rem(600)
+
 
 /* Animations */
 @keyframes rotation 

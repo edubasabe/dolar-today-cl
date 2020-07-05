@@ -5,12 +5,12 @@ import "nprogress/nprogress.css";
 
 import { instance as request, defaultParams } from "./api/index";
 import { parseDolarPrices } from "./utils";
-import "./styles/main.css";
 
 import Chart from "./components/UI/Chart/Chart";
 import Header from "./components/Header/Header";
 import RangePicker from "./components/RangePicker/RangePicker";
 import AverageTable from "components/AverageTable/AverageTable";
+import swal from "@sweetalert/with-react";
 
 function App() {
   const [prices, setPrices] = useState([]);
@@ -32,6 +32,12 @@ function App() {
       const dolarPrices = await parseDolarPrices(Dolares);
       setPrices(dolarPrices);
     } catch (error) {
+      swal(
+        <div>
+          <h1>Hello world!</h1>
+          <p>This is now rendered with JSX!</p>
+        </div>
+      );
       throw new Error(error);
     } finally {
       endLoader();
@@ -79,25 +85,25 @@ function App() {
 
   useEffect(() => {
     getThisMonthPrices();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  const averageTable = prices.length ? <AverageTable prices={prices} /> : null;
   return (
     <div className="App">
-      <div className="container mx-auto flex flex-col flex-wrap justify-center">
-        <Header className="mt-5" />
+      <div className="container">
+        <Header />
         <div
           className={`${
             isLoading ? "is-loading" : ""
-          } shadow-lg rounded bg-white py-10 px-16 mt-5 max-w-3xl mx-auto`}
+          } Card px-5 shadow-lg rounded sm:bg-white md:py-10 md:px-16 mt-5 max-w-3xl mx-auto`}
         >
           <div className="flex flex-col">
+            <Chart prices={prices} />
+            {averageTable}
             <RangePicker
               onFormSubmit={(dateRange) => handleFormSubmit(dateRange)}
             />
-
-            <Chart prices={prices} />
-
-            {prices.length ? <AverageTable prices={prices} /> : null}
           </div>
         </div>
       </div>

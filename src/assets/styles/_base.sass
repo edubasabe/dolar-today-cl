@@ -1,0 +1,82 @@
+// :: Variables
+$whitestgray: #FCFAFD
+$white: #fff
+$green: #53B670
+$fontfamily: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif
+  
+// :: Functions
+// PX to Rem 
+$baseFontSize : 16
+
+@function rem($pixels, $context: $baseFontSize) 
+  @if (unitless($pixels)) 
+    $pixels: $pixels * 1px
+
+  @if (unitless($context))
+    $context: $context * 1px
+
+  @return $pixels / $context * 1rem
+
+// :: Mixins
+// Media Breakpoints 
+$media-breakpoints-up: ( xxs: 320px, xs: 480px, sm: 576px, md: 768px, lg: 992px, lgx: 1024px, xl: 1200px)      
+@mixin media-breakpoint-up($size)
+  @if $size == xxs
+    @media (min-width: map-get($media-breakpoints-up, xxs)) 
+      @content
+  @else if $size == xs
+    @media (min-width: map-get($media-breakpoints-up, xs)) 
+      @content
+  @else if $size == sm
+    @media (min-width: map-get($media-breakpoints-up, sm)) 
+      @content
+  @else if $size == md
+    @media (min-width: map-get($media-breakpoints-up, md)) 
+      @content
+  @else if $size == lg
+    @media (min-width: map-get($media-breakpoints-up, lg)) 
+      @content
+  @else if $size == lgx
+    @media (min-width: map-get($media-breakpoints-up, lgx)) 
+      @content
+  @else
+    @media (min-width: map-get($media-breakpoints-up, xl)) 
+      @content
+
+// Media breakpoints down
+$media-breakpoints-down:  (xs: 480px, sm: 575.98px, md: 767.98px, lg: 991.98px, lgx: 1023.98px, xl: 1199.98px)      
+@mixin media-breakpoint-down($size)
+  @if $size == xxs
+    @media (max-width: map-get($media-breakpoint-down, xxs)) 
+      @content
+  @else if $size == xs
+    @media (max-width: map-get($media-breakpoint-down, xs)) 
+      @content
+  @else if $size == sm
+    @media (max-width: map-get($media-breakpoint-down, sm)) 
+      @content
+  @else if $size == md
+    @media (max-width: map-get($media-breakpoint-down, md)) 
+      @content
+  @else if $size == lg
+    @media (max-width: map-get($media-breakpoint-down, lg)) 
+      @content
+  @else if $size == lgx
+    @media (max-width: map-get($media-breakpoint-down, lgx)) 
+      @content
+  @else
+    @media (max-width: map-get($media-breakpoint-down, xl)) 
+      @content
+
+body 
+  margin: 0
+  font-family: $fontfamily
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+  background-color: $whitestgray
+  box-sizing: border-box;
+
+code 
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
+
+

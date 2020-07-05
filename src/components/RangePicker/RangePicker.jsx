@@ -33,16 +33,16 @@ const RangePicker = (props) => {
   };
 
   return (
-    <div>
+    <>
       <form
-        className="flex items-end justify-center relative"
+        className="md:flex flex-wrap xl:items-end justify-center relative"
         onSubmit={(e) => validateFormBeforeSubmit(e)}
       >
         <Input
           type="date"
           label="Desde"
           required
-          containerclassname="max-w-md mr-4 cursor-pointer"
+          containerclassname="mb-4 sm:mb-0 xl:max-w-md md:mr-4 cursor-pointer"
           onChange={(e) => setStartDate(e.target.value)}
         />
 
@@ -50,25 +50,25 @@ const RangePicker = (props) => {
           type="date"
           label="Hasta"
           required
-          containerclassname="max-w-md mr-4 cursor-pointer"
+          containerclassname="mb-4 sm:mb-0 xl:max-w-md md:mr-4 cursor-pointer"
           onChange={(e) => setEndDate(e.target.value)}
         />
 
         <button
           type="submit"
           onClick={(e) => validateFormBeforeSubmit(e)}
-          className="btn primary text-white font-bold py-2 px-4 rounded"
+          className="w-full btn primary text-white font-bold py-2 px-4 rounded"
         >
           Consultar
         </button>
 
         {error && (
-          <span className="absolute bottom-0 left-0 text-red-500 text-xs transform translate-y-6">
+          <span className="absolute text-center sm:text-left w-full bottom-0 left-0 text-red-500 text-xs transform translate-y-6">
             {error}
           </span>
         )}
       </form>
-    </div>
+    </>
   );
 };
 

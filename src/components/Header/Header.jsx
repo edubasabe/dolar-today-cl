@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = (props) => {
   return (
-    <h1 className={`${props.className} text-center text-4xl font-bold`}>
+    <h1 className="App-header">
       <span role="img" aria-label="Money">
         💵
       </span>{" "}

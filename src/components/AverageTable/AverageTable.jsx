@@ -21,7 +21,7 @@ const AverageTable = (props) => {
       <AveragePrice
         title="Valor Promedio"
         amount={calculateAverage(props.prices.map((item) => item.price))}
-        className="mx-10 text-gray-700"
+        className="mx-4 sm:mx-10 text-gray-700"
       />
 
       <AveragePrice

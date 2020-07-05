@@ -4,7 +4,9 @@ const Input = (props) => {
   return (
     <div className={`${props.containerclassname}`}>
       {props.label ? (
-        <p className="text-sm mb-2 text-gray-600">{props.label}</p>
+        <p className="font-bold mb-2 text-gray-500 text-xs uppercase">
+          {props.label}
+        </p>
       ) : null}
       <input
         {...props}
