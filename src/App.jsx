@@ -6,10 +6,8 @@ import "nprogress/nprogress.css";
 import { instance as request, defaultParams } from "./api/index";
 import { parseDolarPrices } from "./utils";
 
-import Chart from "./components/UI/Chart/Chart";
 import Header from "./components/Header/Header";
-import RangePicker from "./components/RangePicker/RangePicker";
-import AverageTable from "components/AverageTable/AverageTable";
+import Main from "./components/Main/Main";
 import swal from "@sweetalert/with-react";
 
 function App() {
@@ -32,12 +30,14 @@ function App() {
       const dolarPrices = await parseDolarPrices(Dolares);
       setPrices(dolarPrices);
     } catch (error) {
-      swal(
-        <div>
-          <h1>Hello world!</h1>
-          <p>This is now rendered with JSX!</p>
-        </div>
-      );
+      if (!error.status) {
+        swal({
+          title: "Error de conexión",
+          text: "Ups! Parece que hay un error de la conexión a internet",
+          icon: "error",
+          button: "Cerrar",
+        });
+      }
       throw new Error(error);
     } finally {
       endLoader();
@@ -67,6 +67,14 @@ function App() {
       const dolarPrices = parseDolarPrices(Dolares);
       setPrices(dolarPrices);
     } catch (error) {
+      if (!error.status) {
+        swal({
+          title: "Error de conexión",
+          text: "Ups! Parece que hay un error de la conexión a internet",
+          icon: "error",
+          button: "Cerrar",
+        });
+      }
       throw new Error(error);
     } finally {
       endLoader();
@@ -88,20 +96,15 @@ function App() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const averageTable = prices.length ? <AverageTable prices={prices} /> : null;
   return (
     <div className="App">
       <div className="container">
         <Header />
-        <div className={`${isLoading ? "is-loading" : ""} Card`}>
-          <div className="flex flex-col">
-            <Chart prices={prices} />
-            {averageTable}
-            <RangePicker
-              onFormSubmit={(dateRange) => handleFormSubmit(dateRange)}
-            />
-          </div>
-        </div>
+        <Main
+          prices={prices}
+          loading={isLoading}
+          formSubmit={(dateRange) => handleFormSubmit(dateRange)}
+        />
       </div>
     </div>
   );

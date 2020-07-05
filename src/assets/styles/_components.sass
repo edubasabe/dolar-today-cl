@@ -39,7 +39,7 @@
     color: $darkgray
     width: 100%
     min-height: rem(46)
-      
+
 .RangePicker
   position: relative
   &__error
@@ -87,6 +87,18 @@
     background: rgba($green,0.9);
     box-shadow: 0 6px 20px rgba($green,0.23);
 
+.swal-text
+  text-align: center
+.swal-button-container
+  width: 100%
+.swal-button
+  &.swal-button--confirm
+    background-color: $green
+    width: 100%
+    &:hover
+      background-color: lighten($green, 10)
+  &:focus
+    box-shadow: none
 /* Loaders */
 div#nprogress
   .bar
@@ -148,10 +160,12 @@ div#nprogress
       position: absolute
       bottom: -1.8rem
       left: 0
-  
   .Input
     margin-bottom: 0
-
+  .swal-button-container
+    text-align: center
+  .swal-button.swal-button--confirm
+    width: auto
 
 /* Animations */
 @keyframes rotation 
